@@ -8,12 +8,10 @@ from fastapi import Header, HTTPException
 class ProductService:
 
     @staticmethod
-    @staticmethod
     def create_product(db: Session, product_data: ProductCreate) -> Product:
         try:
             # makeing prodcut model object ** helps to make it indit dict
             db_product = Product(**product_data.model_dump())
-
             db.add(db_product)
             db.commit()
             db.refresh(db_product)

@@ -12,4 +12,6 @@ class User(Base):
     is_active = Column(Boolean, default=True)
 
     role_id = Column(Integer, ForeignKey("roles.id"))
+
     role = relationship("Role")
+    refresh_tokens = relationship("RefreshToken",back_populates="user",cascade="all, delete-orphan")
